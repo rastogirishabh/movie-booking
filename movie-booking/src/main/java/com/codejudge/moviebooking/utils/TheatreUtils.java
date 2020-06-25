@@ -12,17 +12,18 @@ import com.codejudge.moviebooking.responsemodel.TheatreResponseModel;
 @Service
 public class TheatreUtils {
 
-	public String generateTheatreId(TheatreRequestModel theatreInputDetails) {
-		
-		Random randomNumber = new Random();
-		
-		StringBuilder uniqueId = new StringBuilder();
-		
-		return uniqueId.append(theatreInputDetails.getTheatre_name())
-				.append("_")
-				.append(theatreInputDetails.getCity())
-				.append(randomNumber.nextInt(20)).toString();
-	}
+	public int generateTheatreId() {
+		return new Random().nextInt(20);		
+		/*
+		 * Random randomNumber = new Random();
+		 * 
+		 * StringBuilder uniqueId = new StringBuilder();
+		 * 
+		 * return uniqueId.append(theatreInputDetails.getTheatre_name()) .append("_")
+		 * .append(theatreInputDetails.getCity())
+		 * .append(randomNumber.nextInt(20)).toString();
+		 */
+		}
 
 	public boolean isTheatreRegistered(String theatre_name, String city, List<TheatreResponseModel> theatreList) {
 		if(!theatreList.stream()

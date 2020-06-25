@@ -20,8 +20,8 @@ public class MovieUtils {
 		return false;
 	}
 
-	public String generateMovieID(String movie_name) {
-		return movie_name.concat(String.valueOf(new Random().nextInt(20)));
+	public int generateMovieID() {
+		return new Random().nextInt(30);
 	}
 
 }

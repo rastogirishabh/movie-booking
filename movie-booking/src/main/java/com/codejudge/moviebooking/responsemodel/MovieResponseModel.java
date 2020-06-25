@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class MovieResponseModel {
 	
-	private String movie_id;
+	private int movie_id;
 
 	private String movie_name;
 
@@ -57,11 +57,11 @@ public class MovieResponseModel {
 		this.length = length;
 	}
 
-	public String getMovie_id() {
+	public int getMovie_id() {
 		return movie_id;
 	}
 
-	public void setMovie_id(String movie_id) {
+	public void setMovie_id(int movie_id) {
 		this.movie_id = movie_id;
 	}
 

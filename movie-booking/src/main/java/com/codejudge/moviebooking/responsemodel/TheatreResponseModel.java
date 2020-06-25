@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class TheatreResponseModel {
 
+	private int theatre_id;
+	
 	private String theatre_name;
 
 	private String theatre_location;
@@ -13,7 +15,7 @@ public class TheatreResponseModel {
 
 	private int pincode;
 	
-	private String theatre_id;
+	
 
 	public String getTheatre_name() {
 		return theatre_name;
@@ -47,19 +49,20 @@ public class TheatreResponseModel {
 		this.pincode = pincode;
 	}
 
-	public String getTheatre_id() {
+	public int getTheatre_id() {
 		return theatre_id;
 	}
 
-	public void setTheatre_id(String theatre_id) {
+	public void setTheatre_id(int theatre_id) {
 		this.theatre_id = theatre_id;
 	}
 
 	@Override
 	public String toString() {
-		return "TheatreResponseModel [theatre_name=" + theatre_name + ", theatre_location=" + theatre_location
-				+ ", city=" + city + ", pincode=" + pincode + ", theatre_id=" + theatre_id + "]";
+		return "TheatreResponseModel [theatre_id=" + theatre_id + ", theatre_name=" + theatre_name
+				+ ", theatre_location=" + theatre_location + ", city=" + city + ", pincode=" + pincode + "]";
 	}
+
 	
 
 	

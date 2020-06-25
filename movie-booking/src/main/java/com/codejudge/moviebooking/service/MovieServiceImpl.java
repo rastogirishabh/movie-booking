@@ -29,7 +29,7 @@ public class MovieServiceImpl implements MovieService {
 		}
 		
 		BeanUtils.copyProperties(movieDetailsReceived, movieCreated);
-		movieCreated.setMovie_id(movieUtils.generateMovieID(movieDetailsReceived.getMovie_name()));
+		movieCreated.setMovie_id(movieUtils.generateMovieID());
 		
 		movieList.add(movieCreated);
 		

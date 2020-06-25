@@ -28,7 +28,7 @@ public class TheatreServiceImpl implements TheatreService {
 		+theatreInputDetails.getTheatre_name() + " already registered in city : " + theatreInputDetails.getCity()); 
 		}
 		BeanUtils.copyProperties(theatreInputDetails, theatreAdded);
-		theatreAdded.setTheatre_id(theatreUtils.generateTheatreId(theatreInputDetails));
+		theatreAdded.setTheatre_id(theatreUtils.generateTheatreId());
 		
 		theatreList.add(theatreAdded);
 		
