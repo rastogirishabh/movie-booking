@@ -20,6 +20,7 @@ public class ExceptionResponse {
 	
 	public ExceptionResponse(String status,String reason) {
 		super();
+		this.status = status;
 		this.reason = reason;
 	}
 	

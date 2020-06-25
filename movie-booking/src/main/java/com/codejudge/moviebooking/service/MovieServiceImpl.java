@@ -24,8 +24,7 @@ public class MovieServiceImpl implements MovieService {
 		
 		MovieResponseModel movieCreated = new MovieResponseModel();
 		
-		if(movieUtils.isMoviePresent(movieDetailsReceived.getMovie_name(), movieList))
-		{
+		if(movieUtils.isMoviePresent(movieDetailsReceived.getMovie_name(), movieList)) {
 			throw new MovieAlreadyPresentException("Movie name : " + movieDetailsReceived.getMovie_name());
 		}
 		
