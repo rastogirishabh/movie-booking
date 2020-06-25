@@ -1,4 +1,4 @@
-package com.codejudge.moviebooking.controller;
+package com.codejudge.moviebooking.resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
