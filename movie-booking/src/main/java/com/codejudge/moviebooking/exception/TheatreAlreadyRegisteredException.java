@@ -1,4 +1,4 @@
-package com.codejudge.moviebooking.service;
+package com.codejudge.moviebooking.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

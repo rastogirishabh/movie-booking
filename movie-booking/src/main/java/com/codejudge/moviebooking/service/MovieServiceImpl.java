@@ -17,11 +17,13 @@ public class MovieServiceImpl implements MovieService {
 	
 	@Autowired
 	TemporaryRepository database;
+	
+	@Autowired
+	MovieResponseModel movieCreated;
 
 	@Override
 	public MovieResponseModel createMovie(MovieRequestModel movieDetailsReceived) {
 		
-		MovieResponseModel movieCreated = new MovieResponseModel();
 		
 		if(movieUtils.isMoviePresent(movieDetailsReceived.getMovie_name(), database.getMovieList())) {
 			throw new MovieAlreadyPresentException("Movie name : " + movieDetailsReceived.getMovie_name());

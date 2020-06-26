@@ -50,6 +50,7 @@ public class MovieShowsRequestModel {
 		return "MovieShowsRequestModel [theatre_id=" + theatre_id + ", movie_id=" + movie_id + ", date=" + date
 				+ ", time=" + time + "]";
 	}
+
 	
 	
 	

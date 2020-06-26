@@ -23,6 +23,11 @@ public class TemporaryRepository {
 	public List<TheatreResponseModel> getTheatreList() {
 		return theatreList;
 	}
+
+	public List<MovieShowsResponseModel> getMovieShowsList() {
+		return movieShowsList;
+	}
+	
 	
 	
 	
