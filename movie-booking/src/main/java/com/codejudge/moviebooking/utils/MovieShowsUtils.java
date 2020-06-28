@@ -19,11 +19,7 @@ public class MovieShowsUtils {
 				.anyMatch(movie -> movie.getMovie_id()==movie_id);
 	}
 
-	public boolean validateDateTimeFormats(LocalDate showDate, LocalTime showTime) {
-		
-		return true;
-	}
-
+	
 	public boolean isTheatreExist(int theatre_id, List<TheatreResponseModel> theatreRepository) {
 		System.out.println("TheatreRepo : " + theatreRepository);
 		return theatreRepository.stream()

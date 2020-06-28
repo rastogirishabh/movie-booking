@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.codejudge.moviebooking.dao.TemporaryRepository;
-import com.codejudge.moviebooking.exception.TheatreAlreadyRegisteredException;
+import com.codejudge.moviebooking.exceptions.TheatreAlreadyRegisteredException;
 import com.codejudge.moviebooking.requestmodel.TheatreRequestModel;
 import com.codejudge.moviebooking.responsemodel.TheatreResponseModel;
 import com.codejudge.moviebooking.utils.TheatreUtils;
@@ -23,6 +23,7 @@ public class TheatreServiceImpl implements TheatreService {
 
 	@Override
 	public TheatreResponseModel addTheatre(TheatreRequestModel theatreInputDetails) {
+		System.out.println("Current Theatres : " + database.getTheatreList());
 		
 		if(theatreUtils.isTheatreRegistered(theatreInputDetails.getTheatre_name(), theatreInputDetails.getCity(), database.getTheatreList())) {
 			throw new TheatreAlreadyRegisteredException("Theatre with name : " 
@@ -32,6 +33,8 @@ public class TheatreServiceImpl implements TheatreService {
 		theatreAdded.setTheatre_id(theatreUtils.generateTheatreId());
 		
 		database.theatreList.add(theatreAdded);
+		
+		System.out.println("New Theatre added : " + database.getTheatreList());
 		
 		return theatreAdded;
 	}

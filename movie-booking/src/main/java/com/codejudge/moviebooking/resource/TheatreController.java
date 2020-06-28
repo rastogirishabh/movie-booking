@@ -1,5 +1,7 @@
 package com.codejudge.moviebooking.resource;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +20,7 @@ public class TheatreController {
 	TheatreService theatreService;
 	
 	@PostMapping("/theatres/create")
-	public ResponseEntity<TheatreResponseModel> addTheatre(@RequestBody TheatreRequestModel theatreInputDetails)
+	public ResponseEntity<TheatreResponseModel> addTheatre(@RequestBody @Valid TheatreRequestModel theatreInputDetails)
 	{
 		return new ResponseEntity<TheatreResponseModel> (theatreService.addTheatre(theatreInputDetails), HttpStatus.OK);
 	}

@@ -1,12 +1,16 @@
 package com.codejudge.moviebooking.requestmodel;
 
+import javax.validation.constraints.NotEmpty;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class TheatreRequestModel {
 	
+	@NotEmpty(message = "theatre_name is required")
 	private String theatre_name;
 	
+	@NotEmpty(message = "theatre_location is required")
 	private String theatre_location;
 	
 	private String city;

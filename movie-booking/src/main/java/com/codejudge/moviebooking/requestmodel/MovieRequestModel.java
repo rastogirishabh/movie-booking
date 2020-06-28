@@ -1,10 +1,13 @@
 package com.codejudge.moviebooking.requestmodel;
 
+import javax.validation.constraints.NotEmpty;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class MovieRequestModel {
 	
+	@NotEmpty(message = "movie_name is required")
 	private String movie_name;
 	
 	private String movie_trailer;
