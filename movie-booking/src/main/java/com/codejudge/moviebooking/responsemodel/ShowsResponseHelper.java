@@ -1,13 +1,13 @@
-package com.codejudge.moviebooking.entity;
+package com.codejudge.moviebooking.responsemodel;
 
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class Shows {
+public class ShowsResponseHelper {
 
 	private LocalDate date;
 	
