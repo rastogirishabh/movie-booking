@@ -23,6 +23,7 @@ public class MovieShowsController {
 	public ResponseEntity<MovieShowsResponseModel> createMovieShows(@RequestBody 
 			@Valid MovieShowsRequestModel movieShowsInputDetails)
 	{
-		return new ResponseEntity<MovieShowsResponseModel>(movieShowsService.createMovieShows(movieShowsInputDetails), HttpStatus.OK);
+		return new ResponseEntity<MovieShowsResponseModel>(movieShowsService.createMovieShows(movieShowsInputDetails), 
+				HttpStatus.OK);
 	}
 }

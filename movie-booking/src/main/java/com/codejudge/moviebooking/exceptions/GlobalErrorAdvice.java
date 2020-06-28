@@ -80,15 +80,4 @@ public class GlobalErrorAdvice extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<> (exceptionResponse, HttpStatus.BAD_REQUEST);
 	}
 	
-	/*
-	 * @ExceptionHandler(InvalidFormatException) public
-	 * ResponseEntity<ExeceptionRespnse> handleDateTimeParse(DateTimeParseException
-	 * exception, WebRequest request) {
-	 * 
-	 * ExceptionResponse exceptionResponse = new ExceptionResponse("failure",
-	 * "Date or Time format incorrecr");
-	 * 
-	 * return new ResponseEntity<ExceptionResponse> (exceptionResponse,
-	 * HttpStatus.BAD_REQUEST); }
-	 */
 }

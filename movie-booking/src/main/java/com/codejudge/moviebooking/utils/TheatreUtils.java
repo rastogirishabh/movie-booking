@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.codejudge.moviebooking.requestmodel.TheatreRequestModel;
 import com.codejudge.moviebooking.responsemodel.TheatreResponseModel;
 
 @Service

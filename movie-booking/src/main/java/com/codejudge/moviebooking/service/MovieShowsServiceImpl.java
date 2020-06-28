@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.codejudge.moviebooking.dao.TemporaryRepository;
+import com.codejudge.moviebooking.entity.Shows;
 import com.codejudge.moviebooking.exceptions.MovieDoesNotExistsException;
 import com.codejudge.moviebooking.exceptions.TheatreDoesNotExistsException;
 import com.codejudge.moviebooking.exceptions.TheatreNotAvailableException;
 import com.codejudge.moviebooking.requestmodel.MovieShowsRequestModel;
 import com.codejudge.moviebooking.responsemodel.MovieShowsResponseModel;
-import com.codejudge.moviebooking.responsemodel.ShowsResponseHelper;
 import com.codejudge.moviebooking.utils.MovieShowsUtils;
 
 @Service
@@ -24,7 +24,7 @@ public class MovieShowsServiceImpl implements MovieShowsService {
 	TemporaryRepository database;
 
 	@Autowired
-	ShowsResponseHelper showsResponseHelper;
+	Shows shows;
 
 	@Autowired
 	MovieShowsResponseModel createdMovieShow;
@@ -47,9 +47,9 @@ public class MovieShowsServiceImpl implements MovieShowsService {
 					" in the requested slot");
 		}
 
-		BeanUtils.copyProperties(movieShowsInputDetails, showsResponseHelper);
+		BeanUtils.copyProperties(movieShowsInputDetails, shows);
 
-		createdMovieShow.setShows(showsResponseHelper);
+		createdMovieShow.setShows(shows);
 
 		createdMovieShow.setMovies(database.getMovieList()
 				.stream()

@@ -17,6 +17,7 @@ public class MovieResponseModel {
 
 	private int length;
 
+	
 	public String getMovie_name() {
 		return movie_name;
 	}

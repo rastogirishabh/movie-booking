@@ -10,9 +10,9 @@ public class TheatreRequestModel {
 	@NotEmpty(message = "theatre_name is required")
 	private String theatre_name;
 	
-	@NotEmpty(message = "theatre_location is required")
 	private String theatre_location;
-	
+
+	@NotEmpty(message = "city is required")
 	private String city;
 	
 	private int pincode;

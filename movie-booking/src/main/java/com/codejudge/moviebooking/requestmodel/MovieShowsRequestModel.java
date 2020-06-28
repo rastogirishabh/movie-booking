@@ -3,19 +3,21 @@ package com.codejudge.moviebooking.requestmodel;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Repository;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@Repository
 public class MovieShowsRequestModel {
-	
 	
 	private int theatre_id;
 	
 	private int movie_id;
 	
-	@DateTimeFormat(pattern ="yyyy/MM/dd")
+	@JsonFormat(pattern ="yyyy/MM/dd")
 	private LocalDate date;
 	
-	@DateTimeFormat(pattern = "HH:mm:ss")
+	@JsonFormat(pattern = "HH:mm:ss")
 	private LocalTime time;
 
 	public int getTheatre_id() {

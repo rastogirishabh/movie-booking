@@ -3,6 +3,8 @@ package com.codejudge.moviebooking.responsemodel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.codejudge.moviebooking.entity.Shows;
+
 @Repository
 public class MovieShowsResponseModel {
 	@Autowired
@@ -12,7 +14,7 @@ public class MovieShowsResponseModel {
 	private TheatreResponseModel theatre;
 	
 	@Autowired
-	ShowsResponseHelper showsResponseHelper;
+	Shows shows;
 
 	public MovieResponseModel getMovies() {
 		return movies;
@@ -30,17 +32,17 @@ public class MovieShowsResponseModel {
 		this.theatre = theatre;
 	}
 
-	public ShowsResponseHelper getShows() {
-		return showsResponseHelper;
+	public Shows getShows() {
+		return shows;
 	}
 
-	public void setShows(ShowsResponseHelper showsResponseHelper) {
-		this.showsResponseHelper = showsResponseHelper;
+	public void setShows(Shows shows) {
+		this.shows = shows;
 	}
 
 	@Override
 	public String toString() {
-		return "MovieShowsResponseModel [movies=" + movies + ", theatre=" + theatre + ", shows=" + showsResponseHelper + "]";
+		return "MovieShowsResponseModel [movies=" + movies + ", theatre=" + theatre + ", shows=" + shows + "]";
 	}
 	
 	
