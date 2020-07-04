@@ -20,8 +20,7 @@ public class MovieShowsController {
 	MovieShowsService movieShowsService;
 	
 	@PostMapping("/shows/create")
-	public ResponseEntity<MovieShowsResponseModel> createMovieShows(@RequestBody 
-			@Valid MovieShowsRequestModel movieShowsInputDetails)
+	public ResponseEntity<MovieShowsResponseModel> createMovieShows( @Valid @RequestBody MovieShowsRequestModel movieShowsInputDetails)
 	{
 		return new ResponseEntity<MovieShowsResponseModel>(movieShowsService.createMovieShows(movieShowsInputDetails), 
 				HttpStatus.OK);

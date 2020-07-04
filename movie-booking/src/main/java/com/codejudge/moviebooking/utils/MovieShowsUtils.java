@@ -13,12 +13,12 @@ import com.codejudge.moviebooking.responsemodel.TheatreResponseModel;
 @Service
 public class MovieShowsUtils {
 
-	public boolean isMovieExist(int movie_id, List<MovieResponseModel> movieRepository) {
-		System.out.println("MovieRepo : " + movieRepository);
-		return movieRepository.stream()
-				.anyMatch(movie -> movie.getMovie_id()==movie_id);
-	}
-
+	/*
+	 * public boolean isMovieExist(int movie_id, List<MovieResponseModel>
+	 * movieRepository) { System.out.println("MovieRepo : " + movieRepository);
+	 * return movieRepository.stream() .anyMatch(movie ->
+	 * movie.getMovie_id()==movie_id); }
+	 */
 	
 	public boolean isTheatreExist(int theatre_id, List<TheatreResponseModel> theatreRepository) {
 		System.out.println("TheatreRepo : " + theatreRepository);

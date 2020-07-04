@@ -1,23 +1,28 @@
-package com.codejudge.moviebooking.requestmodel;
+package com.codejudge.moviebooking.entity;
 
-import javax.validation.constraints.NotEmpty;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-
-public class TheatreRequestModel {
+@Entity
+@Table(name = "Theatre_Master")
+public class TheatreEntity {
 	
-	@NotEmpty(message = "theatre_name is required")
+	@Id
+	private String theatre_id;
+
 	private String theatre_name;
-	
+
 	private String theatre_location;
 
-	@NotEmpty(message = "city is required")
 	private String city;
-	
+
 	private int pincode;
-	
-	public TheatreRequestModel() {
-		System.out.println("--TheatreRequestModel Bean created--");
+
+	public TheatreEntity() {
+		super();
 	}
+
 	public String getTheatre_name() {
 		return theatre_name;
 	}
@@ -50,12 +55,18 @@ public class TheatreRequestModel {
 		this.pincode = pincode;
 	}
 
-	@Override
-	public String toString() {
-		return "TheatreRequestModel [theatre_name=" + theatre_name + ", theatre_location=" + theatre_location
-				+ ", city=" + city + ", pincode=" + pincode + "]";
+	public String getTheatre_id() {
+		return theatre_id;
+	}
+
+	public void setTheatre_id(String theatre_id) {
+		this.theatre_id = theatre_id;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "TheatreResponseModel [theatre_id=" + theatre_id + ", theatre_name=" + theatre_name
+				+ ", theatre_location=" + theatre_location + ", city=" + city + ", pincode=" + pincode + "]";
+	}
 
 }

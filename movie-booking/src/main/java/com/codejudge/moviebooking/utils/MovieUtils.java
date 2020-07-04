@@ -1,27 +1,42 @@
 package com.codejudge.moviebooking.utils;
 
-import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.codejudge.moviebooking.responsemodel.MovieResponseModel;
+
+import com.codejudge.moviebooking.dao.MovieRepository;
 
 @Service
 public class MovieUtils {
 
-	public boolean isMoviePresent(String movie_name, List<MovieResponseModel> movieList) {
-		if(!movieList.stream()
-				.filter(movie -> movie.getMovie_name().equalsIgnoreCase(movie_name))
-				.collect(Collectors.toList())
-				.isEmpty()) {
-			System.out.println("--Movie Already Present--");
-			return true;
-		}
-		return false;
+	@Autowired
+	MovieRepository movieRepository;
+	
+	public boolean isMoviePresent(String movie_id) {
+		return movieRepository.existsById(movie_id);
+		
+		/*
+		 * if(!movieList.stream() .filter(movie ->
+		 * movie.getMovie_name().equalsIgnoreCase(movie_name))
+		 * .collect(Collectors.toList()) .isEmpty()) {
+		 * System.out.println("--Movie Already Present--"); return true; }
+		 */
 	}
-
-	public int generateMovieID() {
-		return new Random().nextInt(30);
+	
+	public String generateMovieID(String movie_name) {
+		String [] movieNameArr = movie_name.split(" ");
+		if(movieNameArr.length<1)
+		{
+			return movie_name;
+		}
+		else
+		{
+			String movie_id="";
+			for(int i =movieNameArr.length-1; i>=0; i--)
+			{
+				movie_id = movieNameArr[i].concat(movie_id);
+			}
+			return movie_id;
+		}
 	}
 
 }

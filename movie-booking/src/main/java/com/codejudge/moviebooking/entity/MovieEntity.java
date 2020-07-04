@@ -1,13 +1,16 @@
-package com.codejudge.moviebooking.responsemodel;
+package com.codejudge.moviebooking.entity;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-
-@Component
-public class MovieResponseModel {
+@Entity
+@Table(name = "Movie_Master")
+public class MovieEntity {
 	
+	@Id
 	private String movie_id;
-
+	
 	private String movie_name;
 
 	private String movie_trailer;
@@ -18,9 +21,18 @@ public class MovieResponseModel {
 
 	private int length;
 
-	public MovieResponseModel() {
-		System.out.println("--MovieResponseModel Bean created--");
+	public MovieEntity() {
+		super();
 	}
+
+	public String getMovie_id() {
+		return movie_id;
+	}
+
+	public void setMovie_id(String movie_id) {
+		this.movie_id = movie_id;
+	}
+
 	public String getMovie_name() {
 		return movie_name;
 	}
@@ -61,19 +73,12 @@ public class MovieResponseModel {
 		this.length = length;
 	}
 
-	public String getMovie_id() {
-		return movie_id;
-	}
-
-	public void setMovie_id(String movie_id) {
-		this.movie_id = movie_id;
-	}
-
 	@Override
 	public String toString() {
-		return "MovieResponseModel [movie_id=" + movie_id + ", movie_name=" + movie_name + ", movie_trailer="
-				+ movie_trailer + ", movie_overview=" + movie_overview + ", movie_poster=" + movie_poster + ", length="
-				+ length + "]";
+		return "MovieEntity [movie_id=" + movie_id + ", movie_name=" + movie_name + ", movie_trailer=" + movie_trailer
+				+ ", movie_overview=" + movie_overview + ", movie_poster=" + movie_poster + ", length=" + length + "]";
 	}
 	
+	
+
 }

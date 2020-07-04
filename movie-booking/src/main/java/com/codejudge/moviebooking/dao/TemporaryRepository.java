@@ -3,7 +3,7 @@ package com.codejudge.moviebooking.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import com.codejudge.moviebooking.responsemodel.MovieResponseModel;
 import com.codejudge.moviebooking.responsemodel.MovieShowsResponseModel;
@@ -11,7 +11,7 @@ import com.codejudge.moviebooking.responsemodel.TheatreResponseModel;
 
 
 
-@Repository
+@Component
 public class TemporaryRepository {
 	
 	public List<MovieResponseModel> movieList = new ArrayList<>();

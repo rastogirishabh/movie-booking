@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.codejudge.moviebooking.entity.MovieEntity;
 import com.codejudge.moviebooking.requestmodel.MovieRequestModel;
-import com.codejudge.moviebooking.responsemodel.MovieResponseModel;
 import com.codejudge.moviebooking.service.MovieService;
 
 @RestController
@@ -19,10 +19,10 @@ public class MovieController {
 	MovieService movieService;
 	
 	@PostMapping("/movies/create")
-	public ResponseEntity<MovieResponseModel> createMovies(@RequestBody @Valid MovieRequestModel movieRequestModel)
+	public ResponseEntity<MovieEntity> createMovies(@Valid @RequestBody MovieRequestModel movieRequestModel)
 	{
 		System.out.println("--Inside CreateMovies of Controller--");
-		return new ResponseEntity<MovieResponseModel>(movieService.createMovie(movieRequestModel), HttpStatus.OK);
+		return new ResponseEntity<MovieEntity>(movieService.createMovie(movieRequestModel), HttpStatus.OK);
 	}
 
 }

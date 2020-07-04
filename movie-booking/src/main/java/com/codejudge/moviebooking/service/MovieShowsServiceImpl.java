@@ -33,10 +33,12 @@ public class MovieShowsServiceImpl implements MovieShowsService {
 	public MovieShowsResponseModel createMovieShows(MovieShowsRequestModel movieShowsInputDetails) {
 
 		System.out.println("Current Shows : " + database.getMovieShowsList());
-
-		if(!movieShowsUtils.isMovieExist(movieShowsInputDetails.getMovie_id(),database.getMovieList()))	{
-			throw new MovieDoesNotExistsException("No movie is available with movie id : " + movieShowsInputDetails.getMovie_id());
-		}
+		/*
+		 * if(!movieShowsUtils.isMovieExist(movieShowsInputDetails.getMovie_id(),
+		 * database.getMovieList())) { throw new
+		 * MovieDoesNotExistsException("No movie is available with movie id : " +
+		 * movieShowsInputDetails.getMovie_id()); }
+		 */
 
 		if(!movieShowsUtils.isTheatreExist(movieShowsInputDetails.getTheatre_id(),database.getTheatreList())) {
 			throw new TheatreDoesNotExistsException("No Theatre is available with Theatre id : " + movieShowsInputDetails.getTheatre_id());
@@ -50,18 +52,14 @@ public class MovieShowsServiceImpl implements MovieShowsService {
 		BeanUtils.copyProperties(movieShowsInputDetails, shows);
 
 		createdMovieShow.setShows(shows);
-
-		createdMovieShow.setMovies(database.getMovieList()
-				.stream()
-				.filter(movies->movies.getMovie_id()==movieShowsInputDetails.getMovie_id())
-				.collect(Collectors.toList())
-				.get(0));
-		createdMovieShow.setTheatre(database.getTheatreList()
-				.stream()
-				.filter(theatre->theatre.getTheatre_id()==movieShowsInputDetails.getTheatre_id())
-				.collect(Collectors.toList())
-				.get(0));
-
+		/*
+		 * createdMovieShow.setMovies(database.getMovieList() .stream()
+		 * .filter(movies->movies.getMovie_id()==movieShowsInputDetails.getMovie_id())
+		 * .collect(Collectors.toList()) .get(0));
+		 * createdMovieShow.setTheatre(database.getTheatreList() .stream()
+		 * .filter(theatre->theatre.getTheatre_id()==movieShowsInputDetails.
+		 * getTheatre_id()) .collect(Collectors.toList()) .get(0));
+		 */
 		database.movieShowsList.add(createdMovieShow);
 
 		System.out.println("Movie Show Created : " + createdMovieShow);

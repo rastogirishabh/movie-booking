@@ -3,11 +3,9 @@ package com.codejudge.moviebooking.requestmodel;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import org.springframework.stereotype.Repository;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-@Repository
+
 public class MovieShowsRequestModel {
 	
 	private int theatre_id;
@@ -20,10 +18,13 @@ public class MovieShowsRequestModel {
 	@JsonFormat(pattern = "HH:mm:ss")
 	private LocalTime time;
 
+	public MovieShowsRequestModel() {
+		System.out.println("--MovieShowsRequestModel Bean created--");
+	}
 	public int getTheatre_id() {
 		return theatre_id;
 	}
-
+	
 	public void setTheatre_id(int theatre_id) {
 		this.theatre_id = theatre_id;
 	}
