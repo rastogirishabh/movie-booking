@@ -8,9 +8,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class MovieShowsRequestModel {
 	
-	private int theatre_id;
+	private String theatre_id;
 	
-	private int movie_id;
+	private String movie_id;
 	
 	@JsonFormat(pattern ="yyyy/MM/dd")
 	private LocalDate date;
@@ -21,19 +21,19 @@ public class MovieShowsRequestModel {
 	public MovieShowsRequestModel() {
 		System.out.println("--MovieShowsRequestModel Bean created--");
 	}
-	public int getTheatre_id() {
+	public String getTheatre_id() {
 		return theatre_id;
 	}
 	
-	public void setTheatre_id(int theatre_id) {
+	public void setTheatre_id(String theatre_id) {
 		this.theatre_id = theatre_id;
 	}
 
-	public int getMovie_id() {
+	public String getMovie_id() {
 		return movie_id;
 	}
 
-	public void setMovie_id(int movie_id) {
+	public void setMovie_id(String movie_id) {
 		this.movie_id = movie_id;
 	}
 

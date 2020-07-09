@@ -1,9 +1,12 @@
 package com.codejudge.moviebooking.utils;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.codejudge.moviebooking.dao.MovieRepository;
+import com.codejudge.moviebooking.entity.MovieEntity;
 
 @Service
 public class MovieUtils {
@@ -37,6 +40,12 @@ public class MovieUtils {
 			}
 			return movie_id;
 		}
+	}
+	
+	public Optional<MovieEntity> findMovieById(String movieId) {
+		return movieRepository.findById(movieId);
+		
+		
 	}
 
 }

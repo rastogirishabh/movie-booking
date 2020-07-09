@@ -1,40 +1,31 @@
 package com.codejudge.moviebooking.utils;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.codejudge.moviebooking.responsemodel.MovieResponseModel;
-import com.codejudge.moviebooking.responsemodel.MovieShowsResponseModel;
-import com.codejudge.moviebooking.responsemodel.TheatreResponseModel;
+import com.codejudge.moviebooking.dao.MovieShowsRepository;
+import com.codejudge.moviebooking.entity.MovieShowsEntity;
+import com.codejudge.moviebooking.requestmodel.MovieShowsRequestModel;
 
 @Service
 public class MovieShowsUtils {
 
-	/*
-	 * public boolean isMovieExist(int movie_id, List<MovieResponseModel>
-	 * movieRepository) { System.out.println("MovieRepo : " + movieRepository);
-	 * return movieRepository.stream() .anyMatch(movie ->
-	 * movie.getMovie_id()==movie_id); }
-	 */
-	
-	public boolean isTheatreExist(int theatre_id, List<TheatreResponseModel> theatreRepository) {
-		System.out.println("TheatreRepo : " + theatreRepository);
-		return theatreRepository.stream()
-				.anyMatch(theatre -> theatre.getTheatre_id() == theatre_id);
-	}
+	@Autowired
+	MovieShowsRepository movieShowsRepository;
 
-	public boolean isTheatreAvailable(LocalDate date, LocalTime time, int theatre_id, List<MovieShowsResponseModel> movieShowsRepository) {
-		System.out.println("MovieShowsRepo : " + movieShowsRepository);
-		return movieShowsRepository.stream()
-				.anyMatch(movieShows->movieShows.getShows().getDate().equals(date)
-						&& movieShows.getShows().getTime().equals(time)
-						&& movieShows.getTheatre().getTheatre_id()==theatre_id);
+	public boolean isTheatreAvailable(MovieShowsRequestModel movieShowsInputDetails) {
+		List<MovieShowsEntity> movieShowList =movieShowsRepository.findMovieShow(movieShowsInputDetails.getTheatre_id(), 
+				movieShowsInputDetails.getMovie_id(), movieShowsInputDetails.getDate(), movieShowsInputDetails.getTime());
 		
+		System.out.println("MovieShows fromDB : " + movieShowList);
+		
+		if(!movieShowList.isEmpty())
+			return true;
+		
+		return false;
+
 	}
-
 	
-
 }

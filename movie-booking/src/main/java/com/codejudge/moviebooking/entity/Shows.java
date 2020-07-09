@@ -4,9 +4,9 @@ package com.codejudge.moviebooking.entity;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
-@Repository
+@Component
 public class Shows {
 
 	private LocalDate date;

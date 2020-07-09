@@ -3,32 +3,32 @@ package com.codejudge.moviebooking.responsemodel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.codejudge.moviebooking.entity.MovieEntity;
 import com.codejudge.moviebooking.entity.Shows;
+import com.codejudge.moviebooking.entity.TheatreEntity;
 
 @Repository
 public class MovieShowsResponseModel {
-	@Autowired
-	private MovieResponseModel movies;
+	private MovieEntity movies;
 	
-	@Autowired
-	private TheatreResponseModel theatre;
+	private TheatreEntity theatre;
 	
 	@Autowired
 	Shows shows;
 
-	public MovieResponseModel getMovies() {
+	public MovieEntity getMovies() {
 		return movies;
 	}
 
-	public void setMovies(MovieResponseModel movies) {
+	public void setMovies(MovieEntity movies) {
 		this.movies = movies;
 	}
 
-	public TheatreResponseModel getTheatre() {
+	public TheatreEntity getTheatre() {
 		return theatre;
 	}
 
-	public void setTheatre(TheatreResponseModel theatre) {
+	public void setTheatre(TheatreEntity theatre) {
 		this.theatre = theatre;
 	}
 

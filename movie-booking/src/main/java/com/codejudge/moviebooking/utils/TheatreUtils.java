@@ -1,9 +1,12 @@
 package com.codejudge.moviebooking.utils;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.codejudge.moviebooking.dao.TheatreRepository;
+import com.codejudge.moviebooking.entity.TheatreEntity;
 
 @Service
 public class TheatreUtils {
@@ -43,6 +46,10 @@ public class TheatreUtils {
 	public boolean isTheatreRegistered(String theatre_id) {
 		return theatreRepository.existsById(theatre_id);
 		
+	}
+	
+	public Optional<TheatreEntity> findTheatrebyId(String theatre_id) {
+		return theatreRepository.findById(theatre_id);
 	}
 
 }
