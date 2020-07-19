@@ -1,5 +1,7 @@
 package com.codejudge.moviebooking.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
@@ -34,9 +36,9 @@ public class MovieShowsServiceImpl implements MovieShowsService {
 	@Autowired
 	MovieShowsRepository movieShowsRepository;
 	
-	@Autowired
-	MovieShowsResponseModel createdMovieShow;
-	
+	/*
+	 * @Autowired MovieShowsResponseModel createdMovieShow;
+	 */
 	@Autowired
 	Shows shows;
 
@@ -62,6 +64,8 @@ public class MovieShowsServiceImpl implements MovieShowsService {
 
 		newMovieShow = movieShowsRepository.save(newMovieShow);
 		
+		MovieShowsResponseModel createdMovieShow = new MovieShowsResponseModel();
+		
 		Optional<MovieEntity> movie = movieUtils.findMovieById(movieShowsInputDetails.getMovie_id());
 		if(movie.isPresent())
 			createdMovieShow.setMovies(movie.get());
@@ -73,9 +77,14 @@ public class MovieShowsServiceImpl implements MovieShowsService {
 		shows.setDate(newMovieShow.getDate());
 		shows.setTime(newMovieShow.getTime());
 		
-		createdMovieShow.setShows(shows);
+		List<Shows> showsList = new ArrayList<>();
+		showsList.add(shows);
+		
+		createdMovieShow.setShows(showsList);
 		
 		System.out.println("MovieShow: " + createdMovieShow);
+		
+		
 		
 		return createdMovieShow;
 	}

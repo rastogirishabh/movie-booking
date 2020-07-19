@@ -1,11 +1,14 @@
 package com.codejudge.moviebooking.responsemodel;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.codejudge.moviebooking.entity.MovieEntity;
 import com.codejudge.moviebooking.entity.Shows;
 import com.codejudge.moviebooking.entity.TheatreEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Repository
 public class MovieShowsResponseModel {
@@ -13,8 +16,9 @@ public class MovieShowsResponseModel {
 	
 	private TheatreEntity theatre;
 	
+
 	@Autowired
-	Shows shows;
+	List<Shows> shows;
 
 	public MovieEntity getMovies() {
 		return movies;
@@ -32,18 +36,22 @@ public class MovieShowsResponseModel {
 		this.theatre = theatre;
 	}
 
-	public Shows getShows() {
+	
+	public List<Shows> getShows() {
 		return shows;
 	}
 
-	public void setShows(Shows shows) {
-		this.shows = shows;
+	public void setShows(List<Shows> showsList) {
+		this.shows = showsList;
 	}
 
 	@Override
 	public String toString() {
-		return "MovieShowsResponseModel [movies=" + movies + ", theatre=" + theatre + ", shows=" + shows + "]";
+		return "MovieShowsResponseModel [movies=" + movies + ", theatre=" + theatre + ", showsList=" + shows + "]";
 	}
+
+	
+
 	
 	
 	
