@@ -1,5 +1,6 @@
 package com.codejudge.moviebooking.utils;
 
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,15 @@ public class MovieShowsUtils {
 	@Autowired
 	MovieShowsRepository movieShowsRepository;
 
-	public boolean isTheatreAvailable(MovieShowsRequestModel movieShowsInputDetails) {
+	public boolean isTheatreAvailable(MovieShowsRequestModel movieShowsInputDetails, int movieLength) {
+		
+		 LocalTime theatreUnavailableStartTime = movieShowsInputDetails.getTime().minusMinutes(movieLength);
+		 LocalTime theatreUnavailableEndTime = movieShowsInputDetails.getTime().plusMinutes(movieLength);
+		 
+		 System.out.println("theatreUnavailableStartTime : " + theatreUnavailableStartTime + "\n theatreUnavailableEndTime : " + theatreUnavailableEndTime);
+		
 		List<MovieShowsEntity> movieShowList =movieShowsRepository.findMovieShow(movieShowsInputDetails.getTheatre_id(), 
-				movieShowsInputDetails.getMovie_id(), movieShowsInputDetails.getDate(), movieShowsInputDetails.getTime());
+				 movieShowsInputDetails.getDate(), theatreUnavailableStartTime, theatreUnavailableEndTime);
 		
 		System.out.println("MovieShows fromDB : " + movieShowList);
 		

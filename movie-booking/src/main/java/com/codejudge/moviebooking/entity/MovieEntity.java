@@ -1,5 +1,6 @@
 package com.codejudge.moviebooking.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -14,7 +15,8 @@ public class MovieEntity {
 	private String movie_name;
 
 	private String movie_trailer;
-
+	
+	@Column(length = 1000)
 	private String movie_overview;
 
 	private String movie_poster;

@@ -53,8 +53,11 @@ public class MovieShowsServiceImpl implements MovieShowsService {
 			throw new MovieDoesNotExistsException("No movie is available with movie id : " +
 					movieShowsInputDetails.getMovie_id()); 
 		}
-
-		if(movieShowsUtils.isTheatreAvailable(movieShowsInputDetails)) {
+		
+		int movieLength = movieUtils.getMovieRunningTime(movieShowsInputDetails.getMovie_id());
+		
+		
+		if(movieShowsUtils.isTheatreAvailable(movieShowsInputDetails, movieLength)) {
 			throw new TheatreNotAvailableException("Another movie show is running at theatre ID : " + movieShowsInputDetails.getTheatre_id() + 
 					" in the requested slot");
 		}
@@ -82,7 +85,7 @@ public class MovieShowsServiceImpl implements MovieShowsService {
 		
 		createdMovieShow.setShows(showsList);
 		
-		System.out.println("MovieShow: " + createdMovieShow);
+		System.out.println("New MovieShow: " + createdMovieShow);
 		
 		
 		

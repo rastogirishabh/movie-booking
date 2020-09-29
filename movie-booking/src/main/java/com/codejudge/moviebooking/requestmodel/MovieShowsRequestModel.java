@@ -12,7 +12,7 @@ public class MovieShowsRequestModel {
 	
 	private String movie_id;
 	
-	@JsonFormat(pattern ="yyyy/MM/dd")
+	@JsonFormat(pattern ="yyyy-MM-dd")
 	private LocalDate date;
 	
 	@JsonFormat(pattern = "HH:mm:ss")

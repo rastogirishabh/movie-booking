@@ -28,14 +28,10 @@ public class MovieUtils {
 	public String generateMovieID(String movie_name) {
 		String [] movieNameArr = movie_name.split(" ");
 		if(movieNameArr.length<1)
-		{
 			return movie_name;
-		}
-		else
-		{
+		else {
 			String movie_id="";
-			for(int i =movieNameArr.length-1; i>=0; i--)
-			{
+			for(int i =movieNameArr.length-1; i>=0; i--) {
 				movie_id = movieNameArr[i].concat(movie_id);
 			}
 			return movie_id;
@@ -45,7 +41,10 @@ public class MovieUtils {
 	public Optional<MovieEntity> findMovieById(String movieId) {
 		return movieRepository.findById(movieId);
 		
-		
+	}
+	
+	public int getMovieRunningTime(String movieId) {
+		return movieRepository.getMovieRunningTime(movieId);
 	}
 
 }

@@ -3,7 +3,7 @@ package com.codejudge.moviebooking;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication // same as @Configuration @EnableAutoConfiguration @ComponentScan
 public class MovieBookingApplication {
 	//private static final Logger LOGGER = LogManager.getLogger(MovieBookingApplication.class);
 	public static void main(String[] args) {
