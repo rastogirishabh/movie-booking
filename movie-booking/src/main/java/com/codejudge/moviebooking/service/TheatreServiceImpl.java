@@ -25,7 +25,10 @@ public class TheatreServiceImpl implements TheatreService {
 	@Override
 	public TheatreEntity addTheatre(TheatreRequestModel theatreInputDetails) {
 		
-		String theatre_id = theatreUtils.generateTheatreId(theatreInputDetails.getTheatre_name(), theatreInputDetails.getCity());
+		//Removed this implementation of generating theatre ID to match it with codejudge requirement
+		//String theatre_id = theatreUtils.generateTheatreId(theatreInputDetails.getTheatre_name(), theatreInputDetails.getCity());
+		
+		String theatre_id = theatreInputDetails.getTheatre_name();
 		
 		if(theatreUtils.isTheatreRegistered(theatre_id)) {
 			throw new TheatreAlreadyRegisteredException("Theatre with name : " +theatreInputDetails.getTheatre_name() 
