@@ -8,14 +8,12 @@ import org.springframework.stereotype.Repository;
 import com.codejudge.moviebooking.entity.MovieEntity;
 import com.codejudge.moviebooking.entity.Shows;
 import com.codejudge.moviebooking.entity.TheatreEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Repository
 public class MovieShowsResponseModel {
 	private MovieEntity movies;
 	
 	private TheatreEntity theatre;
-	
 
 	@Autowired
 	List<Shows> shows;

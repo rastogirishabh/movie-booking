@@ -1,5 +1,6 @@
 package com.codejudge.moviebooking.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -76,6 +77,12 @@ public class MovieShowsServiceImpl implements MovieShowsService {
 		return null;
 
 		
+	}
+
+	@Override
+	public MovieShowsResponseModel getMovieShowsByCityAndDate(String movie_id, String city, LocalDate showDate) {
+		
+		return null;
 	}
 
 }

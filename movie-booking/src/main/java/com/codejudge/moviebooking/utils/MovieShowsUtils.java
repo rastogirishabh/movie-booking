@@ -1,6 +1,9 @@
 package com.codejudge.moviebooking.utils;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +66,20 @@ public class MovieShowsUtils {
 					" in the requested slot");
 		}
 		return true;
+	}
+
+
+	public LocalDate validateAndParseDate(String date) {
+		
+		final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate parsedDate = null;
+		try {
+			parsedDate = LocalDate.parse(date,dateTimeFormatter);
+		}
+		catch(DateTimeParseException e) {
+			System.err.println("Exception in parsing date : " + e);
+		}
+		return parsedDate;
 	}
 	
 }
