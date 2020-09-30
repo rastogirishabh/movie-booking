@@ -13,9 +13,6 @@ import com.codejudge.moviebooking.entity.MovieEntity;
 import com.codejudge.moviebooking.entity.MovieShowsEntity;
 import com.codejudge.moviebooking.entity.Shows;
 import com.codejudge.moviebooking.entity.TheatreEntity;
-import com.codejudge.moviebooking.exceptions.MovieDoesNotExistsException;
-import com.codejudge.moviebooking.exceptions.TheatreDoesNotExistsException;
-import com.codejudge.moviebooking.exceptions.TheatreNotAvailableException;
 import com.codejudge.moviebooking.requestmodel.MovieShowsRequestModel;
 import com.codejudge.moviebooking.responsemodel.MovieShowsResponseModel;
 import com.codejudge.moviebooking.utils.MovieShowsUtils;
@@ -44,52 +41,41 @@ public class MovieShowsServiceImpl implements MovieShowsService {
 
 	@Override
 	public MovieShowsResponseModel createMovieShows(MovieShowsRequestModel movieShowsInputDetails) {
+		
+		System.out.println("MovieShowInputDetails : " + movieShowsInputDetails);
+		
+		if(movieShowsUtils.isMovieShowPossible(movieShowsInputDetails)) {
+			
+			MovieShowsEntity newMovieShow = new MovieShowsEntity();
+			BeanUtils.copyProperties(movieShowsInputDetails, newMovieShow);
 
-		if(!theatreUtils.isTheatreRegistered(movieShowsInputDetails.getTheatre_id())) {
-			throw new TheatreDoesNotExistsException("No Theatre is available with Theatre id : " + movieShowsInputDetails.getTheatre_id());
+			newMovieShow = movieShowsRepository.save(newMovieShow);
+			
+			MovieShowsResponseModel createdMovieShow = new MovieShowsResponseModel();
+			
+			Optional<MovieEntity> movie = movieUtils.findMovieById(movieShowsInputDetails.getMovie_id());
+			if(movie.isPresent())
+				createdMovieShow.setMovies(movie.get());
+			
+			Optional<TheatreEntity> theatre = theatreUtils.findTheatrebyId(movieShowsInputDetails.getTheatre_id());
+			if(theatre.isPresent())
+				createdMovieShow.setTheatre(theatre.get());
+			
+			shows.setDate(newMovieShow.getDate());
+			shows.setTime(newMovieShow.getTime());
+			
+			List<Shows> showsList = new ArrayList<>();
+			showsList.add(shows);
+			
+			createdMovieShow.setShows(showsList);
+			
+			System.out.println("New movie show created : " + createdMovieShow);
+			
+			return createdMovieShow;
 		}
+		return null;
 
-		if(!movieUtils.isMoviePresent(movieShowsInputDetails.getMovie_id())) { 
-			throw new MovieDoesNotExistsException("No movie is available with movie id : " +
-					movieShowsInputDetails.getMovie_id()); 
-		}
 		
-		int movieLength = movieUtils.getMovieRunningTime(movieShowsInputDetails.getMovie_id());
-		
-		
-		if(movieShowsUtils.isTheatreAvailable(movieShowsInputDetails, movieLength)) {
-			throw new TheatreNotAvailableException("Another movie show is running at theatre ID : " + movieShowsInputDetails.getTheatre_id() + 
-					" in the requested slot");
-		}
-
-		MovieShowsEntity newMovieShow = new MovieShowsEntity();
-		BeanUtils.copyProperties(movieShowsInputDetails, newMovieShow);
-
-		newMovieShow = movieShowsRepository.save(newMovieShow);
-		
-		MovieShowsResponseModel createdMovieShow = new MovieShowsResponseModel();
-		
-		Optional<MovieEntity> movie = movieUtils.findMovieById(movieShowsInputDetails.getMovie_id());
-		if(movie.isPresent())
-			createdMovieShow.setMovies(movie.get());
-		
-		Optional<TheatreEntity> theatre = theatreUtils.findTheatrebyId(movieShowsInputDetails.getTheatre_id());
-		if(theatre.isPresent())
-			createdMovieShow.setTheatre(theatre.get());
-		
-		shows.setDate(newMovieShow.getDate());
-		shows.setTime(newMovieShow.getTime());
-		
-		List<Shows> showsList = new ArrayList<>();
-		showsList.add(shows);
-		
-		createdMovieShow.setShows(showsList);
-		
-		System.out.println("New MovieShow: " + createdMovieShow);
-		
-		
-		
-		return createdMovieShow;
 	}
 
 }
