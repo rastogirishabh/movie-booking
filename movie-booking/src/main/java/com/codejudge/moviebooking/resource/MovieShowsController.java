@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.codejudge.moviebooking.exceptions.DateTimeFormatNotValidException;
 import com.codejudge.moviebooking.requestmodel.MovieShowsRequestModel;
 import com.codejudge.moviebooking.responsemodel.MovieShowsResponseModel;
+import com.codejudge.moviebooking.responsemodel.MovieShowsRunningInTheatre;
 import com.codejudge.moviebooking.service.MovieShowsService;
 import com.codejudge.moviebooking.utils.MovieShowsUtils;
 
@@ -36,7 +38,7 @@ public class MovieShowsController {
 	}
 	
 	@GetMapping("/showsBy")
-	public ResponseEntity<MovieShowsResponseModel> getMovieShows(HttpServletRequest request, @RequestParam String city, 
+	public ResponseEntity<MovieShowsResponseModel> getMovieShowsByCity(HttpServletRequest request, @RequestParam String city, 
 			@RequestParam String movie_id, @RequestParam String date ) {
 		
 		System.out.println("--getMovieShows--> " + request.getRequestURI()+"?"+request.getQueryString());
@@ -50,6 +52,14 @@ public class MovieShowsController {
 			throw new DateTimeFormatNotValidException("Invalid Date format!");
 		}
 		return new ResponseEntity<MovieShowsResponseModel> (movieShowsService.getMovieShowsByCityAndDate(movie_id,city,showDate),
+				HttpStatus.OK);
+	}
+	
+	@GetMapping("/showsBy/theatre/{theatre_id}")
+	public ResponseEntity<MovieShowsRunningInTheatre> getShowsRunningInTheatre(@PathVariable String theatre_id) {
+		System.out.println("--getShowsRunningInTheatre--");
+		
+		return new ResponseEntity<MovieShowsRunningInTheatre> (movieShowsService.getMovieShowsByTheatreId(theatre_id),
 				HttpStatus.OK);
 	}
 }
