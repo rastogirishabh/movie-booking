@@ -7,12 +7,13 @@ import javax.validation.Valid;
 import com.codejudge.moviebooking.requestmodel.MovieShowsRequestModel;
 import com.codejudge.moviebooking.responsemodel.MovieShowsResponseModel;
 import com.codejudge.moviebooking.responsemodel.MovieShowsRunningInTheatre;
+import com.codejudge.moviebooking.responsemodel.MoviesRunningInCityResponseModel;
 
 public interface MovieShowsService {
 
 	MovieShowsResponseModel createMovieShows(@Valid MovieShowsRequestModel movieShowsInputDetails);
 	
-	MovieShowsResponseModel getMovieShowsByCityAndDate(String movie_id, String city, LocalDate showDate);
+	MoviesRunningInCityResponseModel getMovieShowsByCityAndDate(String movie_id, String city, LocalDate showDate);
 
 	MovieShowsRunningInTheatre getMovieShowsByTheatreId(String theatre_id);
 

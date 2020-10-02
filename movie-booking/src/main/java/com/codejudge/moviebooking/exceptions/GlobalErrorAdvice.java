@@ -80,4 +80,12 @@ public class GlobalErrorAdvice extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<> (exceptionResponse, HttpStatus.BAD_REQUEST);
 	}
 	
+	@ExceptionHandler(NoTheatresInCityException.class)
+	public ResponseEntity<ExceptionResponse> handleNoTheatreInCity(NoTheatresInCityException exception, WebRequest request) {
+		
+		ExceptionResponse exceptionResponse = new ExceptionResponse("failure",exception.getMessage());
+
+		return new ResponseEntity<ExceptionResponse> (exceptionResponse, HttpStatus.BAD_REQUEST); 
+	}
+	
 }

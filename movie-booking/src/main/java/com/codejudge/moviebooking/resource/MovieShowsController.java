@@ -19,6 +19,7 @@ import com.codejudge.moviebooking.exceptions.DateTimeFormatNotValidException;
 import com.codejudge.moviebooking.requestmodel.MovieShowsRequestModel;
 import com.codejudge.moviebooking.responsemodel.MovieShowsResponseModel;
 import com.codejudge.moviebooking.responsemodel.MovieShowsRunningInTheatre;
+import com.codejudge.moviebooking.responsemodel.MoviesRunningInCityResponseModel;
 import com.codejudge.moviebooking.service.MovieShowsService;
 import com.codejudge.moviebooking.utils.MovieShowsUtils;
 
@@ -38,7 +39,7 @@ public class MovieShowsController {
 	}
 	
 	@GetMapping("/showsBy")
-	public ResponseEntity<MovieShowsResponseModel> getMovieShowsByCity(HttpServletRequest request, @RequestParam String city, 
+	public ResponseEntity<MoviesRunningInCityResponseModel> getMovieShowsByCity(HttpServletRequest request, @RequestParam String city, 
 			@RequestParam String movie_id, @RequestParam String date ) {
 		
 		System.out.println("--getMovieShows--> " + request.getRequestURI()+"?"+request.getQueryString());
@@ -51,7 +52,7 @@ public class MovieShowsController {
 		if(showDate==null) {
 			throw new DateTimeFormatNotValidException("Invalid Date format!");
 		}
-		return new ResponseEntity<MovieShowsResponseModel> (movieShowsService.getMovieShowsByCityAndDate(movie_id,city,showDate),
+		return new ResponseEntity<MoviesRunningInCityResponseModel> (movieShowsService.getMovieShowsByCityAndDate(movie_id,city,showDate),
 				HttpStatus.OK);
 	}
 	
